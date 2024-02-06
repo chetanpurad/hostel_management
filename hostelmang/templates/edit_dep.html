@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Department</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        /* Add any custom styles here */
+
+        body {
+            margin: 20px;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        .edit-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .form-group button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="edit-form">
+            <h1>Edit Department</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="dep_name">Department Name:</label>
+                    <input type="text" id="dep_name" name="dep_name" value="{{ dep.dep_name }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="dep_contact">Department Contact:</label>
+                    <input type="text" id="dep_contact" name="dep_contact" value="{{ dep.dep_contact }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="dep_email">Department Email:</label>
+                    <input type="text" id="dep_email" name="dep_email" value="{{ dep.dep_email }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

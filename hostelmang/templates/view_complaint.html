@@ -1,0 +1,14 @@
+<body>
+    <h1>Warden Dashboard</h1>
+    
+    <h2>Complaints:</h2>
+    <ul>
+        {% for complaint in form %}
+            <li>
+                Student: {{ complaint.full_name }} (Room {{ complaint.room_number }})
+                <br>
+                Complaint: {{ complaint.complaint }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>

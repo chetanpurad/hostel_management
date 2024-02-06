@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        #sidebar {
+            min-width: 250px;
+            background: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        #sidebar a {
+            display: block;
+            color: #fff;
+            padding: 10px 0;
+            text-decoration: none;
+        }
+
+        #sidebar a:hover {
+            background: #555;
+        }
+
+        .dashboard {
+            padding: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+       
+        <a href="{% url 'raise_complaint' %}">Raise a Complaint</a>
+        <a href="{% url 'pay_mess_bill'  %}">Pay Mess Bill</a>
+        <a href="{% url 'apply_fund'  %}">Apply for Student Stay Fund</a>
+        <a href="{% url 'home' %}">Logout</a>
+    </div>
+
+    <div class="dashboard">
+        <h1>Welcome, {{ student_name }}</h1>
+        <p>Your Room Number: {{ room_number }}</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#sidebar a').click(function() {
+                var target = $(this).attr('href').substring(1);
+                $('html, body').animate({
+                    scrollTop: $('#' + target).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Department Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Department Details</h1>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Department</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dep in data %}
+                <tr>
+                    <td>{{ dep.dep_name }}</td>
+                    <td>{{ dep.dep_contact }}</td>
+                    <td>{{ dep.dep_email }}</td>
+                    <td><a href="{% url 'edit_dep' dep.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete_dep' dep.id %}"class="btn btn-danger btn-sm">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

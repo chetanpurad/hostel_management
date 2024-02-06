@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>View Applications</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="my-4">Student Applications</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sl NO</th>
+                        <th>Full Name</th>
+                        <th>Date of Birth</th>
+                        <th>Mobile Number</th>
+                        <th>Gender</th>
+                        <th>Percentage</th>
+                        <th>Department</th>
+                        <th>Hostel</th>
+                        <th>Uploaded Files</th>
+                        <th>Actions</th>
+                        <th>Pyment Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for application in form %}
+                   
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ application.full_name }}</td>
+                            <td>{{ application.date_of_birth }}</td>
+                            <td>{{ application.contact_number }}</td>
+                            <td>{{ application.gender }}</td>
+                            <td>{{ application.percentage }}</td>
+                            <td>{{ application.department }}</td>
+                            <td>{{ application.hostel_choice }}</td>
+                            <td>
+                                <a href="{{ application.id_copy.url }}" target="_blank">ID Copy</a> |
+                                <a href="{{ application.passport_photo.url }}" target="_blank">Passport Photo</a> |
+                                <a href="{{ application.marks_card.url }}" target="_blank">Marks Card</a> |
+                                <a href="{{ application.undertaking_form.url }}" target="_blank">Undertaking Form</a>
+                            </td>
+                            <td>
+                                {% if application.status == 0 or application.status == 2 %}
+                                    <a href="{% url 'approve_application' stud_id=application.id %}" class="btn btn-success"
+                                       onclick="return confirm('Are you sure you want to approve this application?')">Approve</a>
+                                {% endif %}
+                                <a href="{% url 'reject_application' stud_id=application.id %}" class="btn btn-danger"
+                                   onclick="return confirm('Are you sure you want to reject this application?')">Reject</a>
+                                <td>
+                                    {% if application.fee_status == 0 %}
+                                        <span class="badge badge-warning">Not Paid</span>
+                                    {% elif application.fee_status == 1 %}
+                                        <span class="badge badge-success">Paid</span>
+                                    {% else %}
+                                        <span class="badge badge-secondary">Unknown</span>
+                                    {% endif %}
+                                </td>
+                            </td>
+                            </td>
+                        </tr>
+                
+                 
+                        <tr>
+                           
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                
+            </table>
+            <td colspan="10">No student applications available.</td>
+        </div>
+    </div>
+    <div id="messages-container">
+        {% for message_data in messages_json %}
+            <div class="message {% if message_data.tags %}{{ message_data.tags }}{% endif %}">
+                {{ message_data.message }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

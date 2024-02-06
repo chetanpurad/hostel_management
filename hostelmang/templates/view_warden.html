@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Warden Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Warden Details</h1>
+        <table class="table table-bordered mt-3">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Warden Name</th>
+                    <th>Contact</th>
+                    <th>Hostel Id</th>
+                    <th>Password</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for warden in data %}
+                <tr>
+                    <td>{{ warden.warden_name}}</td>
+                    <td>{{warden.contact }}</td>
+                    <td>{{warden.hostel_id }}</td>
+                    <td>{{warden.password }}</td>
+                    <td>
+                        <a href="{% url 'edit_warden' warden.id %}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{% url 'delete_warden' warden.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

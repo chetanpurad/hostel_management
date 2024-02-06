@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hostel Application</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+  
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        form input[type="text"], form input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        .checkbox-container {
+            margin-bottom: 10px;
+        }
+
+        /* Hide the link by default */
+        #hostel-details-link {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hostel Application</h1>
+    <div class="checkbox-container">
+        <!-- Checkbox for checking the hostel details -->
+        
+        {% if messages %}
+            <ul class="messages mt-3">
+                {% for message in messages %}
+                    <li class="alert alert-{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <label>
+            <input type="checkbox" id="hostel-details-checkbox">
+            I have checked the hostel details
+        </label>
+    </div>
+
+    <div class="checkbox-container">
+        <!-- Link to view hostel details -->
+        <label>
+            <a href="{% url 'hostel_details_page' %}"" id="view-hostel-details" target="_blank">View Hostel Details</a>
+        </label>
+    </div>
+    <form action="" method="post" enctype="multipart/form-data">
+        
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" onclick="submitForm()">
+        
+        </div>
+    </form>
+    <div id="success-message" style="display: none;">Application submitted successfully. Please check your application after a few minutes.</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        
+    
+        // Calculate percentage when obtaining or total marks change
+        $('#id_total_marks, #id_obt_marks').on('input', function() {
+            const totalMarks = parseFloat($('#id_total_marks').val());
+            const obtainedMarks = parseFloat($('#id_obt_marks').val());
+    
+            // Calculate the percentage, ensuring it doesn't exceed 100
+            let percentage = ((obtainedMarks / totalMarks) * 100).toFixed(2);
+            percentage = Math.min(100, percentage);
+    
+            // Set the calculated percentage in the 'id_percentage' field
+            $('#id_percentage').val(percentage);
+    
+            // Check if the checkbox is checked
+          });
+          // Function to display the alert message
+        function displayAlert() {
+            alert("Please check the hostel details like gender and rooms before submission of the application.");
+        }
+
+        // Check if the checkbox is checked when the page loads
+        window.addEventListener('load', function() {
+            const checkbox = document.getElementById('hostel-details-checkbox');
+            if (!checkbox.checked) {
+                displayAlert();
+            }
+        });
+            
+        function displaySuccessMessage() {
+        document.getElementById('success-message').style.display = 'block';
+    }
+
+    // Function to submit the form and display the success message
+      function submitForm() {
+        // Submit the form using AJAX or your preferred method
+
+        // Display the success message
+         displaySuccessMessage();
+      }
+      $(document).ready(function() {
+    $('#id_date_of_birth').datepicker();
+    });
+    </script>
+    
+</body>
+</html>

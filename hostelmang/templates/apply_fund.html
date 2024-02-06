@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stay Fund Application</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #declaration-label {
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        #submit-button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        #submit-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stay Fund Application</h1>
+
+    <form id="stayFundForm">
+        {% csrf_token %}
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="department">Department:</label>
+        <input type="text" id="department" name="department" required>
+
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="year" required>
+
+        <label for="from_date">From Date:</label>
+        <input type="date" id="from_date" name="from_date" required>
+
+        <label for="to_date">To Date:</label>
+        <input type="date" id="to_date" name="to_date" required>
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required>
+
+        <label for="in_words">Amount in Words:</label>
+        <input type="text" id="in_words" name="in_words" required>
+
+        <label for="account_number">Account Number:</label>
+        <input type="text" id="account_number" name="account_number" required>
+
+        <label for="ifsc_code">IFSC Code:</label>
+        <input type="text" id="ifsc_code" name="ifsc_code" required>
+
+        <input type="checkbox" id="declaration" name="declaration" required>
+        <label id="declaration-label" for="declaration">I declare that I am admitted in the above-mentioned department and have 75% or above attendance in each month.</label>
+
+        <input type="submit" value="Submit" onclick="showPrintAlert(event)">
+    </form>
+     <!-- Bootstrap modal for the print option -->
+     <div class="modal" tabindex="-1" role="dialog" id="printModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Application Submitted Successfully</h5>
+                </div>
+                <div class="modal-body">
+                    Print the application?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="printApplication()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!-- Include Bootstrap and jQuery -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+      <script>
+          function showPrintAlert(event) {
+              event.preventDefault();  // Prevent the form from actually submitting
+  
+              // Show an alert
+              alert('Application submitted successfully. Click "OK" to print the application.');
+  
+              // Generate the PDF and trigger print
+                window.print()
+          }
+      </script>
+  
+</body>
+</html>

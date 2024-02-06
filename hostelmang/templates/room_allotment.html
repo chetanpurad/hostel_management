@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Room Allotment</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Room Allotment</h2>
+        {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+        </div>
+    {% endif %}
+
+    {% if success_message %}
+        <script>
+            alert("{{ success_message }}");
+        </script>
+    {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="student_id">Select a student:</label>
+                <select class="form-control" name="student_id">
+                    {% for student in form %}
+                    
+                        <option value="{{ student.id }}">{{ student.full_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="room_number">Room Number:</label>
+                <input type="number" class="form-control" name="room_number" min="1" >
+            </div>
+
+            <button type="submit" class="btn btn-primary">Allot Room</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

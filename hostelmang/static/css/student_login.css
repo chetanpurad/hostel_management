@@ -1,0 +1,93 @@
+
+/* Global styles */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #3498db;
+  color: #fff;
+  
+  padding: 20px;
+}
+.container {
+  background-color: #b2b9bf;
+  list-style: none;
+  display: flex;
+  justify-content: left;
+  padding: 10px;
+}
+
+
+
+main {
+  padding: 40px;
+}
+
+.form-group {
+  margin-bottom: 40px;
+}
+
+.btn-link {
+  color: #3498db;
+}
+
+.link-primary {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.link-primary:hover {
+  text-decoration: underline;
+}
+
+/* Additional creative styles */
+
+/* Styling for the form container */
+.form-container {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 60px;
+}
+
+/* Styling for the form inputs */
+.form-control {
+  border: 1px solid #ddd;
+  border-radius: 150px;
+}
+/* Styling for the login button */
+.btn-primary {
+  background-color: #3498db;
+  border:0cap;
+  border-radius: 15px;
+  transition: background-color 2s, transform 1.2s;
+  width: 50px;
+  height: 30px;
+  text-decoration: solid;
+  -ms-text-size-adjust: auto;
+}
+
+/* Hover animation for the login button */
+.btn-primary:hover {
+  background-color: #2c82c9;
+  transform: scale(2.05);
+}
+
+/* Styling for the links */
+.link-primary {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link-primary:hover {
+  text-decoration: underline;
+}
+
+/* Centering the form on the page */
+.form-container {
+  margin: 20 auto;
+  max-width: 400px;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% csrf_token %}
+    <title>Warden Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+    {% if error_message %}
+    <script>
+        alert("{{ error_message }}");
+    </script>
+    {% endif %}
+    
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Warden Dashboard: </h1>
+        
+        <ul class="list-group mt-3" id="studentList">
+            {% if form.0.hostel_choice_id %}
+            <li class="list-group-item">
+                <a href="{% url 'view_applications' hostel_id=form.0.hostel_choice_id %}" class="btn btn-primary btn-block">
+                    View Applications for {{ form.0.hostel_choice }}
+                </a>
+            </li>
+            
+            
+            <li class="list-group-item">
+                <a href="{% url 'room_allotment' hostel_id=form.0.hostel_choice_id %}" class="btn btn-primary btn-block">
+                    Room Alerts
+                </a>
+            </li>
+        </ul>
+           
+            <li class="list-group-item">
+                <a href="{% url 'view_complaints' hostel_id=form.0.hostel_choice_id %}" class="btn btn-primary btn-block">
+                   View Complaints
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{% url 'view_allocations' hostel_id=form.0.hostel_choice_id %}" class="btn btn-primary btn-block">
+                   View Allocated Students
+                </a>
+            </li>
+        </ul>
+        {% else %}
+            <p>No hostel Applications available please go back.</p>
+            <a href="{% url 'home' %}"> Back</a>
+            {% endif %}
+        {% if students %}
+        <h2 class="mt-4">Search Results</h2>
+        <ul class="list-group mt-3">
+            {% for student in students %}
+                <li class="list-group-item">{{ student.full_name }} - Room Number: {{ student.room_number }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    </div>
+
+    
+  
+</body>
+</html>

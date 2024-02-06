@@ -1,0 +1,33 @@
+<html>
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/warden_login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Admin Login</h1>
+    <form action='' method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username">
+        <label for="password">Password:</label>
+        <input type="password" name="password">
+        <button type="submit">Login</button>
+        <div class="spinner" style="display: none;"></div>
+    </form>
+</div>
+{% endblock %}
+{% if messages %}
+<ul class="messages mt-3">
+    {% for message in messages %}
+        <li class="alert alert-{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% block scripts %}
+<script src="{% static 'js/warden_login.js' %}"></script>
+{% endblock %}
+</html>

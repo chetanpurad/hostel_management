@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% csrf_token %}
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .dashboard-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-align: center;
+        }
+
+        .dashboard-link {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="dashboard-title">Admin Dashboard</h1>
+        <a class="dashboard-link btn btn-primary" href="addhostel">Add Hostel</a>
+        <a class="dashboard-link btn btn-primary" href="viewhostel">View Hostel</a>
+        <a class="dashboard-link btn btn-primary" href="add_depar">Add Department</a>
+        <a class="dashboard-link btn btn-primary" href="view_dep">View Department</a>
+        <a class="dashboard-link btn btn-primary" href="add_warden">Add Warden</a>
+        <a class="dashboard-link btn btn-primary" href="view_warden">View Warden</a>
+    </div>
+</body>
+</html>

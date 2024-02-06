@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Warden</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        /* Add any custom styles here */
+
+        body {
+            margin: 20px;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        .edit-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .form-group button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="edit-form">
+            <h1>Edit Warden</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="warden_name">Warden Name:</label>
+                    <input type="text" id="warden_name" name="warden_name" value="{{ wardens.warden_name }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="dep_id">Department id:</label>
+                    <input type="text" id="dep_id" name="dep_id" value="{{ wardens.dep_id }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact:</label>
+                    <input type="text" id="contact" name="contact" value="{{ wardens.contact }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="hostel_id">Hostel Id:</label>
+                    <input type="text" id="hostel_id" name="hostel_id" value="{{ wardens.hostel_id.id }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="text" id="password" name="password" value="{{ wardens.password }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
